@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main %}
+
+<link rel="stylesheet" href="{% static 'css/details.css' %}" />
+
+</head>
+<body>
+    <table>
+        <tr>
+            <td colspan="3">
+                <div class="name">{{ user.first_name }}&nbsp;{{ user.last_name }}</div>
+            </td>
+        </tr>
+        <tr>
+            <td class="details-td">
+                <div class="label">First Name</div> : <div class="phone">{{ user.first_name }}</div><br>
+                <div class="label">Last Name</div> : <div class="phone">{{ user.last_name }}</div><br>
+                <div class="label">Username</div> : <div class="phone">{{ user.username }}</div><br>
+                <div class="label">Email</div> : <div class="email">{{ user.email }}</div>
+            </td>
+            <td class="description-td">
+                <div class="description" >This is your details card</div>
+                
+            </td>
+        </tr>
+    </table>
+
+
+
+    {% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Homepage{% endblock %}
+
+{% block main %}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
+
+<div class="div" style="height:50px;"></div>
+
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading"style="background-color:#9292de;">
+                <h3 class="panel-title" style="color:white;font-weight:bold;font-size:20px;">All Polls</h3>
+            </div>
+                
+            <ul class="list-group" >
+                {% for poll in polls %}
+                <li class="list-group-item" style="height:50px;">
+                    <strong>{{ poll.question }}</strong>
+                    <span class="pull-right">
+                        <a href="{% url 'vote' poll.id %}" class="btn btn-info btn-s" style="background-color:#6665ee;">Vote</a> &nbsp;
+                        <a href="{% url 'results' poll.id %}" class="btn btn-default btn-s" style="background-color:#f6be64;color:white">View Results</a> &nbsp;
+                        <a href="{% url 'delete' poll.id %}" class="btn btn-default btn-s" style="background-color:#ff0000;color:white;">Delete</a> &nbsp;
+                    </span>
+                </li>
+                {% endfor %}
+            </ul>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
+<nav>
+    <div class="logo">
+        <img src="{% static 'images/logo.png' %}" alt="OURPOLLS">
+    </div>
+    <div class="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+    </div>
+    <ul class="nav_links">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'create' %}">Create</a></li>
+        <!-- <li><a href="#">Saved Posts</a></li>
+                <li><a href="#">Contact us</a></li> -->
+        {% if user.is_authenticated %}
+          
+        <li><a href="{% url 'details' %}">{{ user.first_name }}</a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+        <li><a href="{% url 'login' %}">Login</a></li>
+        <li><a  href="{% url 'register' %}">Register</a></li>
+        {% endif %}
+    </ul>
+</nav>

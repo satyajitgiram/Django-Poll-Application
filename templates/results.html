@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Results{% endblock %}
+
+{% block main %}
+
+<link rel="stylesheet" href="{% static 'css/result.css' %}" />
+<div  style="display:flex;align-items: center;justify-content: center;min-height: 100vh;
+background: #6665ee;">
+    <div class="wrapper">
+        <header>{{ poll.question }}</header>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="poll-area">
+                <!-- <input type="radio" name="poll" id="opt-1" value="option1" required>
+                <input type="radio" name="poll" id="opt-2" value="option2">
+                <input type="radio" name="poll" id="opt-3" value="option3">
+                <input type="radio" name="poll" id="opt-4" value="option4"> -->
+                <label for="opt-1" class="opt-1">
+                    <div class="row">
+                        <div class="column">
+                            <span class="circle"></span>
+                            <span class="text">{{ poll.option_one }}</span>
+                        </div>
+                        <span class="percent" style="display: block;">{{ poll.option_one_count }}</span>
+                    </div>
+                    <div class="progress" style='--w:30;'></div>
+                </label>
+                <label for="opt-2" class="opt-2">
+                    <div class="row">
+                        <div class="column">
+                            <span class="circle"></span>
+                            <span class="text">{{ poll.option_two }}</span>
+                        </div>
+                        <span class="percent" style="display: block;">{{ poll.option_two_count }}</span>
+                    </div>
+                    <div class="progress" style='--w:20;'></div>
+                </label>
+                <label for="opt-3" class="opt-3">
+                    <div class="row">
+                        <div class="column">
+                            <span class="circle"></span>
+                            <span class="text">{{ poll.option_three }}</span>
+                        </div>
+                        <span class="percent" style="display: block;">{{ poll.option_three_count }}</span>
+                    </div>
+                    <div class="progress" style='--w:40;'></div>
+                </label>
+                <label for="opt-4" class="opt-4">
+                    <div class="row">
+                        <div class="column">
+                            <span class="circle"></span>
+                            <span class="text">{{ poll.option_four }}</span>
+                        </div>
+                        <span class="percent" style="display: block;">{{ poll.option_four_count }}</span>
+                    </div>
+                    <div class="progress" style='--w:10;'></div>
+                </label>
+                <label for="opt-4" class="opt-4">
+                    <div class="row">
+                        <div class="column">
+                            <span class="circle" style=""></span>
+                            <span class="text" >TOTAL</span>
+                        </div>
+                        <span class="percent" style="display: block;" >{{ poll.total }}</span>
+                    </div>
+                    <div class="progress" style='--w:10;'></div>
+                </label>
+            </div>
+            <button type="submit" class="submit_btn" href="{% url 'home' %}">
+                <a href="{% url 'home' %}" style="color:white;text-decoration:none;">HOME</a> 
+            </button>
+        </form>
+    </div>
+    <script src="{% static 'js/vote.js' %}"></script>
+</div>
+{% endblock %}
